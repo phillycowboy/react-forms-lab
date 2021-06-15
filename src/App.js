@@ -3,10 +3,17 @@ import LoginForm from "./components/LoginForm";
 import TwitterMessage from "./components/TwitterMessage";
 
 class App extends Component {
-
+  state = {
+    message: ""
+  } 
   login = ({ username, password }) => {
     console.log(`Logging in ${username} with password ${password}`);
   };
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
   render() {
     return (
@@ -20,7 +27,7 @@ class App extends Component {
         <h1>
           <pre>TwitterMessage</pre>
         </h1>
-        <TwitterMessage maxChars={280} />
+        <TwitterMessage maxChars={280} twitterData={this.state} handleChange={this.handleChange}/>
 
 
 
